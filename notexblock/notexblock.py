@@ -2,9 +2,8 @@
 
 import pkg_resources
 from xblock.core import XBlock
-from xblock.fields import Integer, Scope, String
+from xblock.fields import Scope, String
 from xblock.fragment import Fragment
-# from xblock.reference.user_service import UserService, XBlockUser
 
 
 class NoteXBlock(XBlock):
@@ -12,9 +11,7 @@ class NoteXBlock(XBlock):
     Allows student make notes.
     """
 
-    note = String(default="", scope=Scope.user_state, help="A simple block for add notes")
-    notes = {}
-    key = Integer(default=0, scope=Scope.user_state)
+    notes = String(default="", scope=Scope.user_state, help="A simple block for add notes")
 
     def resource_string(self, path):
         """Handy helper for getting resources from our kit."""
@@ -37,9 +34,8 @@ class NoteXBlock(XBlock):
         """
         Handler, which add note in block notes.
         """
-        self.key += 1
-        self.notes[self.key] = data['note']
-        return {"notes": data['note']}
+        notes = data['notes']
+        return {"notes": notes}
 
     @staticmethod
     def workbench_scenarios():

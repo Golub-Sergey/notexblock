@@ -4,19 +4,16 @@ function NoteXBlock(runtime, element) {
     var handlerUrlAddNote = runtime.handlerUrl(element, 'add_note');
 
     function addNote(result){
-        $('#note').val('')
-        $('.notes', element).append(result['notes'] + '\n\n')
+        $('.notes', element).val(result['notes'])
     }
 
     $('#note-submit', element).click(function (eventObject) {
 
-        note = $('#note').val()
+        notes = $('.notes').val()
 
         data = {
-            'note': note
+            'notes': notes
         }
-        console.log(data)
-
         $.ajax({
             type: "POST",
             url: handlerUrlAddNote,
@@ -24,5 +21,6 @@ function NoteXBlock(runtime, element) {
             success: addNote
         })
     })
+
 
 }
