@@ -34,6 +34,7 @@ setup(
     install_requires=[
         'XBlock',
     ],
+    requires=[],
     entry_points={
         'xblock.v1': [
             'notexblock = notexblock:NoteXBlock',
