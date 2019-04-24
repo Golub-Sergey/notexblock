@@ -24,7 +24,7 @@ def package_data(pkg, roots):
 
 
 setup(
-    name='notexblock-xblock',
+    name='notexblock',
     version='0.1.0',
     description='notexblock XBlock allows student make notes in the block notes',
     license='UNKNOWN',
