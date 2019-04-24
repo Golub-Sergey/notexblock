@@ -1,1 +1,6 @@
 /* CSS for NoteXBlock */
+
+.notes{
+    width:300px;
+    height:150px;
+}

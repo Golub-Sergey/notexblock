@@ -22,5 +22,9 @@ function NoteXBlock(runtime, element) {
         })
     })
 
+    $(document).ready(function() {
+        $('.notes').froalaEditor()
+    });
+
 
 }
