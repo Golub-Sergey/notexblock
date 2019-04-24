@@ -26,6 +26,12 @@ class NoteXBlock(XBlock):
         frag = Fragment(html.format(self=self))
         frag.add_css(self.resource_string("static/css/notexblock.css"))
         frag.add_javascript(self.resource_string("static/js/src/notexblock.js"))
+
+        frag.add_css(self.resource_string("static/wysiwyg_lib/css/froala_editor.min.css"))
+        frag.add_css(self.resource_string("static/wysiwyg_lib/css/froala_style.min.css"))
+        frag.add_css(self.resource_string("static/wysiwyg_lib/css/all.css"))
+        frag.add_css(self.resource_string("static/wysiwyg_lib/css/fontawesome.css"))
+        frag.add_javascript(self.resource_string("static/wysiwyg_lib/js/froala_editor.min.js"))
         frag.initialize_js('NoteXBlock')
         return frag
 
