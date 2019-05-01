@@ -1,4 +1,6 @@
-"""XBlock whih add notes in block notes."""
+"""
+Block whih add notes in block notes.
+"""
 
 import pkg_resources
 from xblock.core import XBlock
@@ -27,11 +29,22 @@ class NoteXBlock(XBlock):
         frag.add_css(self.resource_string("static/css/notexblock.css"))
         frag.add_javascript(self.resource_string("static/js/src/notexblock.js"))
 
-        frag.add_css(self.resource_string("static/wysiwyg_lib/css/froala_editor.min.css"))
-        frag.add_css(self.resource_string("static/wysiwyg_lib/css/froala_style.min.css"))
-        frag.add_css(self.resource_string("static/wysiwyg_lib/css/all.css"))
-        frag.add_css(self.resource_string("static/wysiwyg_lib/css/fontawesome.css"))
-        frag.add_javascript(self.resource_string("static/wysiwyg_lib/js/froala_editor.min.js"))
+        # frag.add_css(self.resource_string("static/wysiwyg_lib/css/froala_editor.min.css"))
+        # frag.add_css(self.resource_string("static/wysiwyg_lib/css/froala_style.min.css"))
+        # frag.add_css(self.resource_string("static/wysiwyg_lib/css/all.css"))
+        # frag.add_css(self.resource_string("static/wysiwyg_lib/css/fontawesome.css"))
+        # frag.add_javascript(self.resource_string("static/wysiwyg_lib/js/froala_editor.min.js"))
+
+        frag.add_css_url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css')
+        frag.add_css_url('https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css')
+        frag.add_css_url('https://cdn.jsdelivr.net/npm/froala-editor@2.9.5/css/froala_editor.pkgd.min.css')
+        frag.add_css_url('https://cdn.jsdelivr.net/npm/froala-editor@2.9.5/css/froala_style.min.css')
+
+        frag.add_javascript_url('https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js')
+        frag.add_javascript_url('https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js')
+        frag.add_javascript_url('https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js')
+        frag.add_javascript_url('https://cdn.jsdelivr.net/npm/froala-editor@2.9.5/js/froala_editor.pkgd.min.js')
+
         frag.initialize_js('NoteXBlock')
         return frag
 

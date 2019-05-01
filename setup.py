@@ -23,11 +23,18 @@ def package_data(pkg, roots):
     return {pkg: data}
 
 
+with open(os.path.join(os.path.dirname(__file__), 'README.md')) as readme:
+    README = readme.read()
+
+os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
+
+
 setup(
     name='notexblock',
     version='0.1.0',
     description='notexblock XBlock allows student make notes in the block notes',
-    license='UNKNOWN',
+    long_description=README,
+    license='LICENSE',
     packages=[
         'notexblock',
     ],
