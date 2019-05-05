@@ -1,4 +1,6 @@
-"""Setup for configurate notexblock XBlock package."""
+"""
+Setup for configurate notexblock XBlock package.
+"""
 
 from __future__ import absolute_import
 
@@ -8,11 +10,11 @@ from setuptools import setup
 
 
 def package_data(pkg, roots):
-    """Find package_data.
+    """
+    Find package_data.
 
     All of the files under each of the `roots` will be declared as package
     data for package `pkg`.
-
     """
     data = []
     for root in roots:

@@ -16,10 +16,6 @@ RUN git clone https://github.com/edx/xblock-sdk.git
 
 RUN pip install -e .
 
-WORKDIR  xblock-sdk
+RUN mkdir ./var; touch ./var/workbench.logcd
 
-RUN python manage.py migrate
-
-#RUN pwd; cd /xblock_development/; ls
-
-#VOLUME /xblock_development/
+RUN python xblock-sdk/manage.py migrate

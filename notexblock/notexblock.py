@@ -16,7 +16,9 @@ class NoteXBlock(XBlock):
     notes = String(default="", scope=Scope.user_state, help="A simple block for add notes")
 
     def resource_string(self, path):
-        """Handy helper for getting resources from our kit."""
+        """
+        Handy helper for getting resources from our kit.
+        """
         data = pkg_resources.resource_string(__name__, path)
         return data.decode("utf8")
 
@@ -28,12 +30,6 @@ class NoteXBlock(XBlock):
         frag = Fragment(html.format(self=self))
         frag.add_css(self.resource_string("static/css/notexblock.css"))
         frag.add_javascript(self.resource_string("static/js/src/notexblock.js"))
-
-        # frag.add_css(self.resource_string("static/wysiwyg_lib/css/froala_editor.min.css"))
-        # frag.add_css(self.resource_string("static/wysiwyg_lib/css/froala_style.min.css"))
-        # frag.add_css(self.resource_string("static/wysiwyg_lib/css/all.css"))
-        # frag.add_css(self.resource_string("static/wysiwyg_lib/css/fontawesome.css"))
-        # frag.add_javascript(self.resource_string("static/wysiwyg_lib/js/froala_editor.min.js"))
 
         frag.add_css_url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css')
         frag.add_css_url('https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css')
@@ -58,7 +54,9 @@ class NoteXBlock(XBlock):
 
     @staticmethod
     def workbench_scenarios():
-        """Display current XBlock in the workbench."""
+        """
+        Display current XBlock in the workbench.
+        """
         return [
             ("NoteXBlock",
              """<notexblock/>

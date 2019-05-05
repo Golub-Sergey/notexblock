@@ -5,11 +5,12 @@ Test outsettingsvalues view.
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+import json
+
 from django.test import Client, RequestFactory, TestCase
 from mock import Mock
 from notexblock import NoteXBlock
 from xblock.fields import ScopeIds
-from xblock.plugin import PluginMissingError
 from xblock.runtime import DictKeyValueStore, KvsFieldData
 from xblock.test.tools import TestRuntime as Runtime
 
@@ -22,18 +23,17 @@ class TestNoteXblock(TestCase):
     def setUp(self):
         """
         Create mane instances for all test.
-
         """
         self.client = Client()
         self.data = {'notes': 'test'}
+        self.json_data = json.dumps(self.data)
 
     def test_student_view(self):
         """
         Test of works url.
         """
-        with self.assertRaises(PluginMissingError):
-            self.client.get('/')
-            self.client.get('/scenario/notexblock.0/')
+        self.client.get('/')
+        self.client.get('/scenario/notexblock.0/')
         self.assertEquals(self.client.get('/').status_code, 200)
         request = self.client.get('/scenario/notexblock.0/')
         self.assertEquals(request.status_code, 200)
@@ -56,8 +56,7 @@ class TestNoteXblock(TestCase):
         runtime = Runtime(services={'field-data': field_data})
         block = NoteXBlock(runtime, scope_ids=scope_ids)
 
-        request = RequestFactory().post('scenario/notexblock.0/', self.data)
-
+        request = RequestFactory().post('scenario/notexblock.0/', json.dumps(self.data), 'application/json')
         result = block.add_note(request)
 
-        self.assertTrue(result)
+        self.assertEquals(result.status_code, 200)
