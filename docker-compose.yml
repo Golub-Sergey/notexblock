@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  notexblock:
+    image: notexblock
+    command: python xblock-sdk/manage.py runserver 0.0.0.0:8000
+    tty: true
+    ports:
+      - '8000:8000'
+    volumes:
+      - ./:/xblock_development/*
